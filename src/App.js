@@ -20,6 +20,12 @@ const Bookmark = React.lazy(() =>
     )
 );
 
+const SearchResult = React.lazy(() => {
+    import(
+        /* webpackPrefetch: true, webpackChunkName: "SearchResult" */ './containers/SearchResult/SearchResult'
+    )
+});
+
 const App = () => (
     <BrowserRouter>
         <Navbar>
@@ -28,6 +34,7 @@ const App = () => (
                     <Route exact path="/" component={Home} />
                     <Route exact path="/detail/:id" component={Detail} />
                     <Route exact path="/bookmark" component={Bookmark} />
+                    <Route exact path="/search/:q" component={SearchResult} />
                     <Route render={() => <Redirect push to="/" />}></Route>
                 </Switch>
             </Suspense>
