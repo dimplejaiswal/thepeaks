@@ -1,5 +1,14 @@
-const get = () => {};
+import axios from 'axios';
+import {
+    API_KEY,
+    baseURL,
+    timeout
+} from './config';
 
-const post = () => {};
-
-export { get, post };
+export default axios.create({
+    baseURL,
+    timeout,
+    params: {
+        'api-key': API_KEY,
+    },
+});;

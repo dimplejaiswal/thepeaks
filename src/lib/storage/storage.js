@@ -1,5 +1,9 @@
-const get = () => {};
+const get = (key) => (
+    localStorage.getItem(key)
+);
 
-const set = () => {};
+const set = (key, val) => (
+    localStorage.setItem(key, val)
+);
 
 export { get, set };
