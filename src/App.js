@@ -23,7 +23,7 @@ const Bookmark = React.lazy(() =>
 const SearchResult = React.lazy(() => {
     import(
         /* webpackPrefetch: true, webpackChunkName: "SearchResult" */ './containers/SearchResult/SearchResult'
-    )
+    );
 });
 
 const App = () => (

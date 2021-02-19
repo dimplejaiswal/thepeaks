@@ -1,9 +1,5 @@
 import axios from 'axios';
-import {
-    API_KEY,
-    baseURL,
-    timeout
-} from './config';
+import { API_KEY, baseURL, timeout } from './config';
 
 export default axios.create({
     baseURL,
@@ -11,4 +7,4 @@ export default axios.create({
     params: {
         'api-key': API_KEY,
     },
-});;
+});
