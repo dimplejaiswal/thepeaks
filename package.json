@@ -16,7 +16,7 @@
     "build:prod": "NODE_ENV=production webpack --config ./tools/webpack/webpack.prod.js --mode=production --progress",
     "build:dev": "webpack --config ./tools/webpack/webpack.dev.js --mode=development --watch --progress",
     "lint": "eslint .",
-    "prettify": "prettier --write"
+    "prettify": "prettier --write ."
   },
   "dependencies": {
     "axios": "^0.21.1",
