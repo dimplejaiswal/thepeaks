@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const OfflinePlugin = require('offline-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { merge } = require('webpack-merge');
 const webpackBase = require('./webpack.base');
 const ServiceWorkerPlugin = require('./webpack.sw');
@@ -22,6 +23,7 @@ module.exports = merge(webpackBase, {
     output: {
         filename: 'js/[name].[contenthash:8].js',
         chunkFilename: 'js/[name].[contenthash:8].lazy.js',
+        path: path.resolve(__dirname, BASE_PATH, "dist"),
     },
 
     optimization: {
@@ -60,12 +62,7 @@ module.exports = merge(webpackBase, {
             cacheGroups: {
                 vendor: {
                     test: /[\\/]node_modules[\\/]/,
-                    name(module) {
-                        const packageName = module.context.match(
-                            /[\\/]node_modules[\\/](.*?)([\\/]|$)/
-                        )[1];
-                        return `npm.${packageName.replace('@', '')}`;
-                    },
+                    name: 'vendor',
                 },
             },
         },
@@ -119,6 +116,11 @@ module.exports = merge(webpackBase, {
             test: /\.js$|\.css$|\.html$/,
             threshold: 10240,
             minRatio: 0.8,
+        }),
+
+        new MiniCssExtractPlugin({
+            filename: "css/[name].[contenthash:8].css",
+            chunkFilename: "css/[name].[contenthash:8].css"
         }),
 
         // new WebpackPwaManifest({

@@ -65,6 +65,7 @@ webpackStats.json
 #
 ################################################
 bin
+dist/
 node_modules
 bower_components
 public/live

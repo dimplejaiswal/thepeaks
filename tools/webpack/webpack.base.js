@@ -30,17 +30,13 @@ module.exports = {
             {
                 test: /\.js?/,
                 use: 'babel-loader',
+                exclude: /node_modules/,
             },
             {
-                test: /\.(sa|sc|c)ss$/,
+                test: /\.(scss|css)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader', // translates CSS into CommonJS
-                        options: {
-                            minimize: true,
-                        },
-                    },
+                    'css-loader',
                     'sass-loader', // compiles Sass to CSS
                 ],
             },
