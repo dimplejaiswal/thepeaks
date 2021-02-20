@@ -1,6 +1,8 @@
-@import '../../styles/base';
+@import '../../styles/variables';
 
 .footer {
     height: 100px;
     background-color: $blue-color;
+    height: 242px;
+    margin-top: 104px;
 }

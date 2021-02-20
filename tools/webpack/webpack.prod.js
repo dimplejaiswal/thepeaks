@@ -23,7 +23,8 @@ module.exports = merge(webpackBase, {
     output: {
         filename: 'js/[name].[contenthash:8].js',
         chunkFilename: 'js/[name].[contenthash:8].lazy.js',
-        path: path.resolve(__dirname, BASE_PATH, "dist"),
+        path: path.resolve(__dirname, BASE_PATH, 'dist'),
+        publicPath: '/',
     },
 
     optimization: {
@@ -119,8 +120,8 @@ module.exports = merge(webpackBase, {
         }),
 
         new MiniCssExtractPlugin({
-            filename: "css/[name].[contenthash:8].css",
-            chunkFilename: "css/[name].[contenthash:8].css"
+            filename: 'css/[name].[contenthash:8].css',
+            chunkFilename: 'css/[name].[contenthash:8].css',
         }),
 
         // new WebpackPwaManifest({

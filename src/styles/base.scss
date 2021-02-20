@@ -1,1 +1,6 @@
-$blue-color: #052962;
+@import '../styles/variables';
+body {
+    margin: 0;
+    font-size: 16px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

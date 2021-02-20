@@ -29,7 +29,8 @@ module.exports = merge(webpackBase, {
     output: {
         filename: 'js/[name].js',
         chunkFilename: 'js/[name].chunk.js',
-        path: path.resolve(__dirname, BASE_PATH, "dist"),
+        path: path.resolve(__dirname, BASE_PATH, 'dist'),
+        publicPath: '/',
     },
 
     optimization: {
@@ -49,8 +50,8 @@ module.exports = merge(webpackBase, {
             failOnError: false, // show a warning when there is a circular dependency
         }),
         new MiniCssExtractPlugin({
-            filename: "css/[name].css",
-            chunkFilename: "css/[name].css"
+            filename: 'css/[name].css',
+            chunkFilename: 'css/[name].css',
         }),
         new webpack.HotModuleReplacementPlugin(), // Tell webpack we want hot reloading
     ],
@@ -64,6 +65,8 @@ module.exports = merge(webpackBase, {
     },
 
     devServer: {
+        historyApiFallback: true,
+        publicPath: '/',
         contentBase: path.join(__dirname, BASE_PATH, 'dist'),
         compress: true,
         port: 9000,

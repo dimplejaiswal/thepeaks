@@ -40,6 +40,18 @@ module.exports = {
                     'sass-loader', // compiles Sass to CSS
                 ],
             },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '/public/images/[name].[ext]',
+                            publicPath: '/',
+                        },
+                    },
+                ],
+            },
         ],
     },
     plugins: [
@@ -51,6 +63,7 @@ module.exports = {
         extensions: ['.js', '.jsx'],
         alias: {
             ui: path.resolve(__dirname, `${APP_DIR}/src/ui`),
+            util: path.resolve(__dirname, `${APP_DIR}/src/util`),
         },
     },
 };
