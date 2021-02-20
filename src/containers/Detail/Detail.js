@@ -10,7 +10,7 @@ const Detail = ({ id }) => {
     useEffect(() => {
         http.get(`/${id}`, {
             params: {
-                'show-fields': 'trailText,main,body',
+                'show-fields': 'headline,body',
             },
         })
             .then((response) => {
@@ -26,19 +26,16 @@ const Detail = ({ id }) => {
 
     const {
         webTitle,
-        fields: { trailText, main, body },
+        fields: { headline, body },
         webPublicationDate,
     } = story;
     return (
         <div>
             <div className="left">
-                <p>{webPublicationDate}</p>
-                <p>{webTitle}</p>
-                <div dangerouslySetInnerHTML={{ __html: trailText }} />
+                <p className="date">{webPublicationDate}</p>
+                <p className="title">{webTitle}</p>
+                <p className="headline">{headline}</p>
                 <div dangerouslySetInnerHTML={{ __html: body }} />
-            </div>
-            <div className="right">
-                <div dangerouslySetInnerHTML={{ __html: main }} />
             </div>
         </div>
     );

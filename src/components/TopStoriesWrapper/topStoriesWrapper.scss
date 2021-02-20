@@ -28,7 +28,7 @@
     .bottom {
         margin-top: 30px;
         .card {
-            margin-right: 30px;
+            margin: 0 30px 0 0;
         }
     }
     .card-text {
@@ -42,18 +42,23 @@
         border-bottom: 4px solid red;
     }
 }
-
 @media (max-width: 1024px) {
     .top-stories {
         .news-cards {
             flex-direction: column;
         }
+        .col,
+        .left,
+        .right {
+            width: 100%;
+        }
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .top-stories {
         .left,
         .right {
             margin: 0 0 30px 0;
-        }
-        .right {
-            width: 100%;
         }
         .col {
             margin: 0;
@@ -62,8 +67,44 @@
             }
         }
         .col,
-        .left {
+        .left,
+        .right {
             width: 100%;
+        }
+        .bottom {
+            flex-flow: column;
+            margin: 0;
+            .card {
+                margin: 0 0 30px 0;
+            }
         }
     }
 }
+@media (min-width: 320px) and (max-width: 767px) {
+    .top-stories {
+        .news-cards,
+        .bottom {
+            font-size: 0.5em;
+        }
+        .right-card {
+            margin-bottom: 15px;
+        }
+        .left,
+        .right {
+            margin: 0 0 15px 0;
+        }
+        .col {
+            margin: 0;
+            &:first-child {
+                margin-right: 15px;
+            }
+        }
+        .bottom {
+            flex-flow: column;
+            margin: 0;
+            .card {
+                margin: 0 0 15px 0;
+            }
+        }
+    }
+} ;
