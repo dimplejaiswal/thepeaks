@@ -9,12 +9,17 @@
     .col {
         display: flex;
     }
-
+    .headline {
+        font-size: 1.5em;
+    }
     .left,
     .col {
         margin: 0 30px 0 0;
         flex-direction: column;
         width: 50%;
+        &::last-child {
+            margin-right: 0;
+        }
     }
     .left,
     .right {
@@ -36,7 +41,7 @@
         box-sizing: border-box;
         bottom: 0;
         padding: 0 8px;
-        background-color: $input-blue;
+        background-color: $headline;
         color: $white;
         opacity: 0.9;
         border-bottom: 4px solid red;
@@ -56,6 +61,9 @@
 }
 @media (min-width: 768px) and (max-width: 1024px) {
     .top-stories {
+        .headline {
+            font-size: 1em;
+        }
         .left,
         .right {
             margin: 0 0 30px 0;
@@ -82,6 +90,16 @@
 }
 @media (min-width: 320px) and (max-width: 767px) {
     .top-stories {
+        .headline {
+            overflow: hidden;
+            padding: 1em 0;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin: 0 auto;
+        }
+        .col {
+            margin: 15px 0 0 0;
+        }
         .news-cards,
         .bottom {
             font-size: 0.5em;
@@ -89,15 +107,9 @@
         .right-card {
             margin-bottom: 15px;
         }
-        .left,
         .right {
             margin: 0 0 15px 0;
-        }
-        .col {
-            margin: 0;
-            &:first-child {
-                margin-right: 15px;
-            }
+            flex-flow: column;
         }
         .bottom {
             flex-flow: column;

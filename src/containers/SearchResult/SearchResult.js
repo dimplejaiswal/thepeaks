@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Loader from 'ui/Loader/Loader';
 import valueAt from 'util/valueAt';
-import Card from '../../components/Card/Card';
+import CardWrapper from '../../components/CardWrapper/CardWrapper';
 import http from '../../lib/http/http';
 
 import './searchResult.scss';
@@ -30,6 +30,11 @@ const SearchResult = ({ query }) => {
     }, []);
 
     useEffect(() => {
+        setPage(1);
+        setResults([]);
+    }, [query]);
+
+    useEffect(() => {
         http.get('/search', {
             params: {
                 page,
@@ -46,7 +51,7 @@ const SearchResult = ({ query }) => {
             })
             // eslint-disable-next-line no-console
             .catch((e) => console.error(e));
-    }, [page]);
+    }, [page, setResults]);
 
     // here we handle what happens when user scrolls to Load More div
     // in this case we just update page variable
@@ -59,13 +64,10 @@ const SearchResult = ({ query }) => {
 
     return (
         <div className="container">
-            <div className="post-list">
-                {results.map((data) => (
-                    <Card key={data.id} data={data} />
-                ))}
-                <div className="loading" ref={loader}>
-                    <Loader />
-                </div>
+            <h1 className="heading"> Search Results </h1>
+            <CardWrapper results={results} />
+            <div className="loading" ref={loader}>
+                <Loader />
             </div>
         </div>
     );

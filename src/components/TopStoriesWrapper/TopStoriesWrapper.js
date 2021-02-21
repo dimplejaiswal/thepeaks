@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '../Card/Card';
+import valueAt from '../../util/valueAt';
 import './topStoriesWrapper.scss';
 
 const TopStoriesWrapper = ({ data }) => {
@@ -16,15 +17,15 @@ const TopStoriesWrapper = ({ data }) => {
                         <div className="card right-card">
                             <img
                                 className="card-img"
-                                src={initialCards[1].fields.thumbnail}
+                                src={valueAt(initialCards[1], 'fields.thumbnail', '')}
                                 alt="Card Img"
                             />
                             <div className="card-text">
-                                <h2 className="headlind">{initialCards[1].webTitle}</h2>
+                                <h2 className="headline">{initialCards[1].webTitle}</h2>
                             </div>
                         </div>
                         <div className="card-text">
-                            <h2 className="headlind">{initialCards[2].webTitle}</h2>
+                            <h2 className="headline">{initialCards[2].webTitle}</h2>
                         </div>
                     </div>
                     <div className="col card1">
@@ -35,11 +36,11 @@ const TopStoriesWrapper = ({ data }) => {
                                 alt="Card Img"
                             />
                             <div className="card-text">
-                                <h2 className="headlind">{initialCards[3].webTitle}</h2>
+                                <h2 className="headline">{initialCards[3].webTitle}</h2>
                             </div>
                         </div>
                         <div className="card-text">
-                            <h2 className="headlind">{initialCards[4].webTitle}</h2>
+                            <h2 className="headline">{initialCards[4].webTitle}</h2>
                         </div>
                     </div>
                 </div>

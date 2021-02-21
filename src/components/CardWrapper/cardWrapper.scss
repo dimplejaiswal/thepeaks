@@ -1,0 +1,9 @@
+.card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .card {
+        margin-bottom: 30px;
+    }
+}
