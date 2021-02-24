@@ -12,12 +12,21 @@
         border-bottom: 2px solid $white;
         background-color: $input-blue;
         color: $input-val;
+        transition: opacity 0.25s ease-in-out;
+        -moz-transition: opacity 0.25s ease-in-out;
+        -webkit-transition: opacity 0.25s ease-in-out;
         &:focus {
             outline: none;
         }
         &::placeholder {
             color: $input-val;
             font-size: 1em;
+        }
+        &.hide {
+            opacity: 0;
+        }
+        &.show {
+            opacity: 1;
         }
     }
     .search-icon {

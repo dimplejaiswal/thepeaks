@@ -4,4 +4,9 @@
     .heading {
         font-size: 3em;
     }
+    .top-section {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+    }
 }

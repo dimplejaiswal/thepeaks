@@ -1,0 +1,26 @@
+@import '../../styles/variables.scss';
+
+.btn {
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-tap-highlight-color: $blue-color;
+    background-color: $blue-color;
+    border: 0;
+    color: white;
+    border-radius: 4px;
+    padding: 8px 12px;
+    outline: none;
+    &::-moz-focus-inner {
+        border: 0;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+.button-icon {
+    display: flex;
+    .icon {
+        padding-right: 6px;
+    }
+}

@@ -63,7 +63,7 @@ const SearchResult = ({ query }) => {
     };
 
     return (
-        <div className="container">
+        <div className="search-container">
             <h1 className="heading"> Search Results </h1>
             <CardWrapper results={results} />
             <div className="loading" ref={loader}>

@@ -4,7 +4,7 @@ import valueAt from '../../util/valueAt';
 import './card.scss';
 
 const Card = ({ data }) => (
-    <Link to={`/detail/${data.id}`}>
+    <Link to={`/detail/${data.id}`} className="link">
         <div className="card">
             <img
                 className="card-img"

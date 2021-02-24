@@ -44,16 +44,14 @@ const Search = () => {
 
     return (
         <div className="search" ref={wrapperRef}>
-            {showBox && (
-                <input
-                    className="input"
-                    value={value}
-                    placeholder="Search all news"
-                    onChange={(e) => setValue(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    type="text"
-                />
-            )}
+            <input
+                className={`input ${showBox ? 'show' : 'hide'}`}
+                value={value}
+                placeholder="Search all news"
+                onChange={(e) => setValue(e.target.value)}
+                onKeyDown={handleKeyDown}
+                type="text"
+            />
             <button className="btn-icon" type="button" onClick={handleSearchIconClick}>
                 <img className="searchcon" src={Icon} alt="SearchIcon" />
             </button>

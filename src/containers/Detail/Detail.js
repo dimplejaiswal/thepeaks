@@ -2,15 +2,33 @@
 import React, { useEffect, useState } from 'react';
 import Loader from 'ui/Loader/Loader';
 import valueAt from 'util/valueAt';
+import { setBookMarkItem, removeBookMarkItem, checkBookMarkItem } from 'util/bookmark';
+import BookMarkButton from '../../components/BookmarkButton/BookmarkButton';
 import http from '../../lib/http/http';
+import './detail.scss';
 
 const Detail = ({ id }) => {
+    const [isBookmarked, setIsBookMarked] = useState(checkBookMarkItem(id));
     const [story, setStory] = useState(null);
+
+    const addBookMark = () => {
+        setBookMarkItem({
+            webTitle: story.webTitle,
+            fields: story.fields,
+            id: story.id,
+        });
+        setIsBookMarked(true);
+    };
+
+    const removeBookMark = () => {
+        removeBookMarkItem(id);
+        setIsBookMarked(false);
+    };
 
     useEffect(() => {
         http.get(`/${id}`, {
             params: {
-                'show-fields': 'headline,body',
+                'show-fields': 'headline,body,thumbnail,trailText',
             },
         })
             .then((response) => {
@@ -23,14 +41,17 @@ const Detail = ({ id }) => {
     if (!story) {
         return <Loader />;
     }
-
     const {
         webTitle,
         fields: { headline, body },
         webPublicationDate,
     } = story;
     return (
-        <div>
+        <div className="detail-container">
+            <BookMarkButton
+                text={isBookmarked ? 'REMOVE BOOKMARK' : 'ADD BOOKMARK'}
+                handleOnClick={isBookmarked ? removeBookMark : addBookMark}
+            />
             <div className="left">
                 <p className="date">{webPublicationDate}</p>
                 <p className="title">{webTitle}</p>
