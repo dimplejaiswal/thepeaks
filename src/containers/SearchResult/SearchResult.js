@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Loader from 'ui/Loader/Loader';
 import valueAt from 'util/valueAt';
+import { OrderBy, data } from '../../components/OrderBy/OrderBy';
 import CardWrapper from '../../components/CardWrapper/CardWrapper';
 import http from '../../lib/http/http';
 
@@ -11,6 +12,7 @@ const SearchResult = ({ query }) => {
 
     // tracking on which page we currently are
     const [page, setPage] = useState(1);
+    const [orderBy, setOrderBy] = useState(data[0].value);
 
     // add loader refrence
     const loader = useRef(null);
@@ -32,7 +34,7 @@ const SearchResult = ({ query }) => {
     useEffect(() => {
         setPage(1);
         setResults([]);
-    }, [query]);
+    }, [query, orderBy]);
 
     useEffect(() => {
         http.get('/search', {
@@ -41,6 +43,7 @@ const SearchResult = ({ query }) => {
                 q: query,
                 'show-fields': 'headline,trailText,thumbnail',
                 'page-size': 15,
+                'order-by': orderBy,
             },
         })
             .then((response) => {
@@ -62,9 +65,14 @@ const SearchResult = ({ query }) => {
         }
     };
 
+    const handleDropdownClicked = (value) => setOrderBy(value);
+
     return (
         <div className="search-container">
-            <h1 className="heading"> Search Results </h1>
+            <div className="top-section">
+                <h1 className="heading"> Search Results </h1>
+                <OrderBy onItemClick={handleDropdownClicked} />
+            </div>
             <CardWrapper results={results} />
             <div className="loading" ref={loader}>
                 <Loader />

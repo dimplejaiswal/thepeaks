@@ -1,0 +1,33 @@
+@import '../../styles/variables.scss';
+.notifier {
+    position: fixed;
+    top: 0;
+    width: 85%;
+    margin: 0 auto;
+    color: $white;
+    transition: transform 0.25s ease-in-out;
+    -moz-transition: transform 0.25s ease-in-out;
+    -webkit-transition: transform 0.25s ease-in-out;
+
+    &.hide {
+        transform: translateY(-50px);
+    }
+    &.show {
+        transform: translateY(0);
+    }
+    .text {
+        display: flex;
+        justify-content: center;
+        padding: 8px 0;
+        margin: 0;
+        .icon {
+            padding-right: 6px;
+        }
+        &.remove-bm {
+            background-color: $bm-red;
+        }
+        &.add-bm {
+            background-color: $bm-green;
+        }
+    }
+}

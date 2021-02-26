@@ -7,7 +7,7 @@ import Logo from '../../../assets/images/Logo-white.png';
 const Header = () => (
     <div className="header">
         <div className="nav">
-            <Link to="/">
+            <Link to="/" className="link">
                 <img src={Logo} alt="Logo" />
             </Link>
             <Search />

@@ -3,12 +3,24 @@
 .header {
     height: 126px;
     background-color: $blue-color;
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        width: 85%;
+        margin: 0 auto;
+        height: 100%;
+        align-items: center;
+    }
 }
-.nav {
-    display: flex;
-    justify-content: space-between;
-    width: 85%;
-    margin: 0 auto;
-    height: 100%;
-    align-items: center;
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .header {
+        height: 136px;
+        .nav {
+            flex-flow: column;
+            .link {
+                margin: 16px 0;
+            }
+        }
+    }
 }

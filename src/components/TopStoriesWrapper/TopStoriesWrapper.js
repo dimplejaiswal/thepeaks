@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Card from '../Card/Card';
 import valueAt from '../../util/valueAt';
 import CardWrapper from '../CardWrapper/CardWrapper';
+import DefaultImg from '../../../assets/images/Logo-white.png';
 import './topStoriesWrapper.scss';
 
 const TopStoriesWrapper = ({ data }) => {
@@ -22,7 +23,7 @@ const TopStoriesWrapper = ({ data }) => {
                                     src={valueAt(
                                         initialCards[1],
                                         'fields.thumbnail',
-                                        ''
+                                        DefaultImg
                                     )}
                                     alt="Card Img"
                                 />
@@ -44,7 +45,11 @@ const TopStoriesWrapper = ({ data }) => {
                             <div className="card right-card">
                                 <img
                                     className="card-img"
-                                    src={initialCards[3].fields.thumbnail}
+                                    src={valueAt(
+                                        initialCards[3],
+                                        'fields.thumbnail',
+                                        DefaultImg
+                                    )}
                                     alt="Card Img"
                                 />
                                 <div className="card-text">

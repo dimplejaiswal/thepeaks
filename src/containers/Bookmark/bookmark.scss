@@ -1,0 +1,16 @@
+.bookmarks-container {
+    width: 85%;
+    margin: auto;
+    .heading {
+        font-size: 3em;
+    }
+    .card-wrapper {
+        flex-wrap: wrap;
+        .link {
+            flex: 0 0 32%;
+            &:nth-child(3n + 3) {
+                margin: 0;
+            }
+        }
+    }
+}

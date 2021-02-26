@@ -11,6 +11,11 @@
     .card-wrapper {
         flex-wrap: wrap;
     }
+    .top-section {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+    }
 }
 .search-results {
     display: flex;

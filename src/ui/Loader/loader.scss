@@ -1,4 +1,7 @@
-.loaderIcon {
-    display: flex;
-    justify-content: center;
+.loader {
+    height: 55vh;
+    .loaderIcon {
+        display: flex;
+        justify-content: center;
+    }
 }

@@ -1,59 +1,70 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import './dropdown.scss';
 import CarrotIcon from '../../../assets/images/carrot-icon.png';
 
-const data = [
-    { id: 0, label: 'Newest' },
-    { id: 1, label: 'Oldest' },
-    { id: 2, label: 'All' },
-];
-
-const Dropdown = () => {
+const Dropdown = ({ data, onItemClick }) => {
+    const wrapperRef = useRef(null);
     const [isOpen, setOpen] = useState(false);
-    // const [items, setItem] = useState(data);
-    const [selectedItem, setSelectedItem] = useState(null);
+    const [selectedItem, setSelectedItem] = useState(data[0].value);
 
     const toggleDropdown = () => setOpen(!isOpen);
 
-    const handleItemClick = (id) =>
-        selectedItem === id ? setSelectedItem(null) : setSelectedItem(id);
+    const handleItemClick = (value) => {
+        if (selectedItem !== value) {
+            setSelectedItem(value);
+            setOpen(false);
+            // eslint-disable-next-line no-unused-expressions
+            onItemClick && onItemClick(value);
+        }
+    };
+
+    const handleClickOutside = useCallback(
+        (event) => {
+            if (wrapperRef && !wrapperRef.current.contains(event.target)) {
+                setOpen(false);
+            }
+        },
+        [setOpen]
+    );
+
+    useEffect(() => {
+        window.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            window.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [handleClickOutside]);
 
     return (
-        <div className="dropdown" role="button" tabIndex="0">
+        <div className="dropdown" role="button" tabIndex="0" ref={wrapperRef}>
             <div
                 className="dropdown-header"
                 onClick={toggleDropdown}
                 role="button"
                 tabIndex="0"
             >
-                {selectedItem
-                    ? data.find((item) => item.id === selectedItem).label
-                    : 'Select your destination'}
-                <span className={`icon ${isOpen && 'open'}`}>
+                {data.find((item) => item.value === selectedItem).label}
+                <span className={`icon${isOpen ? ' open' : ''}`}>
                     {' '}
                     <img src={CarrotIcon} alt="&tm;" />
                 </span>
             </div>
-            <div className={`dropdown-body ${isOpen && 'open'}`}>
-                {data.map((item) => (
-                    <div
-                        className="dropdown-item"
-                        onClick={(e) => handleItemClick(e.target.id)}
-                        id={item.id}
-                        role="button"
-                        tabIndex="0"
-                    >
-                        <span
-                            className={`dropdown-item-dot ${
-                                item.id === selectedItem && 'selected'
+            {isOpen && (
+                <div className={`dropdown-body${isOpen ? ' open' : ''}`}>
+                    {data.map((item) => (
+                        <div
+                            className={`dropdown-item${
+                                item.value === selectedItem ? ' selected' : ''
                             }`}
+                            onClick={() => handleItemClick(item.value)}
+                            value={item.value}
+                            role="button"
+                            tabIndex="0"
                         >
-                            •{' '}
-                        </span>
-                        {item.label}
-                    </div>
-                ))}
-            </div>
+                            {item.label}
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 };

@@ -1,12 +1,41 @@
 .home {
     width: 85%;
     margin: 0 auto;
-    .heading {
-        font-size: 3em;
-    }
+
     .top-section {
         display: flex;
         align-items: baseline;
         justify-content: space-between;
+        .heading {
+            font-size: 3em;
+        }
+        .right {
+            display: flex;
+        }
+        .link {
+            margin: 0 20px;
+            align-self: flex-end;
+        }
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .home {
+        .top-section {
+            flex-flow: column;
+            .heading {
+                font-size: 2.5em;
+                margin: 16px auto;
+            }
+            .link {
+                margin: 0;
+            }
+            .right {
+                display: flex;
+                margin: 16px 0;
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
     }
 }
