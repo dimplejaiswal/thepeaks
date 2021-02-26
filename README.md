@@ -52,11 +52,11 @@ thePeaks uses a number of open source projects to work properly:
 
 ## Details
 
-    -   `tools` - Webpack configuration for dev as well as production mode.
-    -   `src/containers` - Main Page Components
-    -   `src/ui` - Generic UI components
-    -   `src/components` - Components required by the Application. Application Specific components.
-    -   `src/styles` - Base styles and variable
-    -   `src/util` - Util functions
-    -   `assets/images` - Images
-    -   `server` - Server code
+-   `tools` - Webpack configuration for dev as well as production mode.
+-   `src/containers` - Main Page Components
+-   `src/ui` - Generic UI components
+-   `src/components` - Components required by the Application. Application Specific components.
+-   `src/styles` - Base styles and variable
+-   `src/util` - Util functions
+-   `assets/images` - Images
+-   `server` - Server code
