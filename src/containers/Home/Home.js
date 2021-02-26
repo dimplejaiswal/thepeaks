@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Loader from 'ui/Loader/Loader';
-import { Link } from 'react-router-dom';
 import valueAt from '../../util/valueAt';
 import CardWrapper from '../../components/CardWrapper/CardWrapper';
-import BookmarkButton from '../../components/BookmarkButton/BookmarkButton';
 import TopStoriesWrapper from '../../components/TopStoriesWrapper/TopStoriesWrapper';
-import { OrderBy, data } from '../../components/OrderBy/OrderBy';
+import { data } from '../../components/OrderBy/OrderBy';
 import http from '../../lib/http/http';
+import TopSection from '../../components/TopSection/TopSection';
 import './home.scss';
 
 const getSearchApi = (section, pageSize = 8, orderBy = data[0].value) =>
@@ -43,15 +42,7 @@ const Home = () => {
 
     return (
         <div className="home">
-            <div className="top-section">
-                <h1 className="heading"> Top Stories </h1>
-                <div className="right">
-                    <Link className="link" to="/bookmark">
-                        <BookmarkButton text="VIEW BOOKMARK" />
-                    </Link>
-                    <OrderBy onItemClick={onDropdownClicked} />
-                </div>
-            </div>
+            <TopSection heading="Top Stories" onItemClick={onDropdownClicked} />
             <TopStoriesWrapper data={topStories} />
             <h1 className="heading"> Sport </h1>
             <CardWrapper results={sportStories} />

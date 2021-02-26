@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Loader from 'ui/Loader/Loader';
 import valueAt from 'util/valueAt';
-import { OrderBy, data } from '../../components/OrderBy/OrderBy';
+import { data } from '../../components/OrderBy/OrderBy';
 import CardWrapper from '../../components/CardWrapper/CardWrapper';
+import TopSection from '../../components/TopSection/TopSection';
 import http from '../../lib/http/http';
 
 import './searchResult.scss';
@@ -69,10 +70,7 @@ const SearchResult = ({ query }) => {
 
     return (
         <div className="search-container">
-            <div className="top-section">
-                <h1 className="heading"> Search Results </h1>
-                <OrderBy onItemClick={handleDropdownClicked} />
-            </div>
+            <TopSection heading="Search Results" onItemClick={handleDropdownClicked} />
             <CardWrapper results={results} />
             <div className="loading" ref={loader}>
                 <Loader />

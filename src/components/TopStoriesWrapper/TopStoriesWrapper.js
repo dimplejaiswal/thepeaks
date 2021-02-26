@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Card from '../Card/Card';
 import valueAt from '../../util/valueAt';
 import CardWrapper from '../CardWrapper/CardWrapper';
-import DefaultImg from '../../../assets/images/Logo-white.png';
+import DefaultImg from '../../../assets/images/bg-thepeaks.png';
 import './topStoriesWrapper.scss';
 
 const TopStoriesWrapper = ({ data }) => {

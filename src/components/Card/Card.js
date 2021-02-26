@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import valueAt from '../../util/valueAt';
 import './card.scss';
-import Default from '../../../assets/images/Logo-white.png';
+import Default from '../../../assets/images/bg-thepeaks.png';
 const Card = ({ data }) => (
     <Link to={`/detail/${data.id}`} className="link">
         <div className="card">
