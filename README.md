@@ -4,10 +4,10 @@
 
 ## Features
 
--   Search Result - User can search any content
--   Home Page - News and Sports Section.
--   Bookmark - Bookmarked by the user
--   Detail/Article Page
+-   `Search Result` - User can search any content
+-   `Home Page` - News and Sports Section.
+-   `Bookmark` - Bookmarked by the user
+-   `Detail/Article Page`
 
 ## Installation and Execution
 
