@@ -13,29 +13,32 @@
 
 Install the dependencies and devDependencies and start the server.
 
-sh
+```sh
 cd thePeaks
 npm i
+```
 
 For dev environment
 
-sh
+```sh
 npm start:dev
+```
 
 For production environments...
 
-sh
+```sh
 npm build:prod
 npm start
+```
 
 ## Tech
 
 thePeaks uses a number of open source projects to work properly:
 
--   reactjs.org - View Library
+-   [reactjs.org] - View Library
 -   [node.js] - evented I/O for the backend
 -   [Express] - fast node.js network app framework
--   webpack.js.org - the streaming build system
+-   [webpack.js.org] - the streaming build system
 -   eslint & prettier - For linting
 -   babel - for transpiling
 -   jest - For testing
