@@ -1,11 +1,11 @@
 {
-  "name": "thepeaks",
+  "name": "sevenpeaks",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "engines": {
     "npm": ">=5",
-    "node": ">=8.15.1"
+    "node": "14.2.0"
   },
   "scripts": {
     "test": "jest",
