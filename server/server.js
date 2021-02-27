@@ -11,6 +11,10 @@ app.use(compress());
 // We are using Node Server for demo purposes.
 app.use(express.static(path.resolve('../dist')));
 
+app.get('*', (_, res) => {
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
+
 app.listen(PORT, () => {
     // eslint-disable-next-line no-console
     console.log(`Server is running at ${PORT}`);
