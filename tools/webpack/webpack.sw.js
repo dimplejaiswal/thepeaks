@@ -18,6 +18,19 @@ const runTimeConfig = [
             cacheName: 'pages',
         },
     },
+    {
+        urlPattern: /https:\/\/content\.guardianapis\.com\/search/,
+        handler: 'NetworkFirst',
+        options: {
+            expiration: {
+                maxAgeSeconds: pageExpiry,
+            },
+            cacheableResponse: {
+                statuses: [0, 200],
+            },
+            cacheName: 'api',
+        },
+    },
 ];
 
 module.exports = [

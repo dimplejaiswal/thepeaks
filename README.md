@@ -51,6 +51,13 @@ thePeaks uses a number of open source projects to work properly:
 -   Special bookmark util to set the bookmark data and get the bookmark data
 -   Add and Remove Bookmark with animation
 
+## PWA
+
+-   Added service worker support using workbox
+-   It can precache js,css and other images
+-   It can cache index.html and other api's
+-   It will work offline
+
 ## Details
 
 -   `tools` - Webpack configuration for dev as well as production mode.
