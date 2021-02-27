@@ -21,14 +21,14 @@ npm i
 For dev environment
 
 ```sh
-npm start:dev
+npm run start:dev
 ```
 
 For production environments...
 
 ```sh
-npm build:prod
-npm start
+npm run build
+npm run start
 ```
 
 ## Tech
@@ -49,6 +49,7 @@ thePeaks uses a number of open source projects to work properly:
 -   Bookmarking is being stored in local storage.
 -   Bookmark page is shown using the data stored in local storage.
 -   Special bookmark util to set the bookmark data and get the bookmark data
+-   Add and Remove Bookmark with animation
 
 ## Details
 

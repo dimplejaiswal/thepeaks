@@ -7,7 +7,13 @@ const getBookMarkItems = () => {
     if (bookMarkItems.length) {
         return bookMarkItems;
     }
-    bookMarkItems = JSON.parse(storage.get(BOOKMARK_STORAGE_KEY)) || [];
+    try {
+        bookMarkItems = JSON.parse(storage.get(BOOKMARK_STORAGE_KEY)) || [];
+    } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+        bookMarkItems = [];
+    }
     return bookMarkItems;
 };
 

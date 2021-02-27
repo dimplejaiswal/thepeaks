@@ -1,8 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const WebpackPwaManifest = require('webpack-pwa-manifest');
-// const OfflinePlugin = require('offline-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -88,30 +87,6 @@ module.exports = merge(webpackBase, {
             inject: true,
         }),
 
-        // // Put it in the end to capture all the HtmlWebpackPlugin's
-        // // assets manipulations and do leak its manipulations to HtmlWebpackPlugin
-        // new OfflinePlugin({
-        //     relativePaths: false,
-        //     publicPath: '/',
-        //     appShell: '/',
-
-        //     // No need to cache .htaccess. See http://mxs.is/googmp,
-        //     // this is applied before any match in `caches` section
-        //     excludes: ['.htaccess'],
-
-        //     caches: {
-        //         main: [':rest:'],
-
-        //         // All chunks marked as `additional`, loaded after main section
-        //         // and do not prevent SW to install. Change to `optional` if
-        //         // do not want them to be preloaded at all (cached only when first loaded)
-        //         additional: ['*.chunk.js'],
-        //     },
-
-        //     // Removes warning for about `additional` section usage
-        //     safeToUseOptionalCaches: true,
-        // }),
-
         new CompressionPlugin({
             algorithm: 'gzip',
             test: /\.js$|\.css$|\.html$/,
@@ -124,26 +99,34 @@ module.exports = merge(webpackBase, {
             chunkFilename: 'css/[name].[contenthash:8].css',
         }),
 
-        // new WebpackPwaManifest({
-        //     name: 'React Boilerplate',
-        //     short_name: 'React BP',
-        //     description: 'My React Boilerplate-based project!',
-        //     background_color: '#fafafa',
-        //     theme_color: '#b1624d',
-        //     inject: true,
-        //     ios: true,
-        //     icons: [
-        //         {
-        //             src: path.resolve('app/images/icon-512x512.png'),
-        //             sizes: [72, 96, 128, 144, 192, 384, 512],
-        //         },
-        //         {
-        //             src: path.resolve('app/images/icon-512x512.png'),
-        //             sizes: [120, 152, 167, 180],
-        //             ios: true,
-        //         },
-        //     ],
-        // }),
+        new WebpackPwaManifest({
+            name: 'The Peaks',
+            short_name: 'Peaks',
+            description: 'News App',
+            background_color: '#ffffff',
+            theme_color: '#000000',
+            inject: true,
+            ios: true,
+            icons: [
+                {
+                    src: path.resolve(
+                        __dirname,
+                        BASE_PATH,
+                        'assets/images/Logo-white.png'
+                    ),
+                    sizes: [72, 96, 128, 144, 192, 384, 512],
+                },
+                {
+                    src: path.resolve(
+                        __dirname,
+                        BASE_PATH,
+                        'assets/images/Logo-white.png'
+                    ),
+                    sizes: [120, 152, 167, 180],
+                    ios: true,
+                },
+            ],
+        }),
 
         new webpack.ids.HashedModuleIdsPlugin({
             hashFunction: 'sha256',

@@ -1,9 +1,24 @@
 const path = require('path');
 const { GenerateSW } = require('workbox-webpack-plugin');
 const BASE_PATH = '../../';
-const APP_DIR = path.join(__dirname, `${BASE_PATH}public`);
+const APP_DIR = path.join(__dirname, `${BASE_PATH}dist`);
+const pageExpiry = 60 * 60 * 24 * 365;
 
-const runTimeConfig = [];
+const runTimeConfig = [
+    {
+        urlPattern: '/',
+        handler: 'NetworkFirst',
+        options: {
+            expiration: {
+                maxAgeSeconds: pageExpiry,
+            },
+            cacheableResponse: {
+                statuses: [0, 200],
+            },
+            cacheName: 'pages',
+        },
+    },
+];
 
 module.exports = [
     new GenerateSW({
