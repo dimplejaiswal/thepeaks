@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Loader from 'ui/Loader/Loader';
 import valueAt from 'util/valueAt';
+import format from 'date-fns/format';
 import { setBookMarkItem, removeBookMarkItem, checkBookMarkItem } from 'util/bookmark';
 import http from '../../lib/http/http';
 import BookMarkButton from '../../components/BookmarkButton/BookmarkButton';
@@ -52,6 +53,10 @@ const Detail = ({ id }) => {
         fields: { headline, body },
         webPublicationDate,
     } = story;
+
+    let startTime = new Date(webPublicationDate);
+    startTime = new Date(startTime.getTime() + startTime.getTimezoneOffset() * 60000);
+
     return (
         <div className="detail-container">
             <Notifier
@@ -66,7 +71,7 @@ const Detail = ({ id }) => {
                 handleOnClick={isBookmarked ? removeBookMark : addBookMark}
             />
             <div className="left">
-                <p className="date">{webPublicationDate}</p>
+                <p className="date">{format(startTime, 'iii dd MMM yyyy p')} BTS</p>
                 <h1 className="title">{webTitle}</h1>
                 <h3 className="headline">{headline}</h3>
                 <div dangerouslySetInnerHTML={{ __html: body }} />

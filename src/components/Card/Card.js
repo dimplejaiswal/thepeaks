@@ -13,7 +13,13 @@ const Card = ({ data }) => (
             />
             <div className="card-text">
                 <h2 className="headline">{data.webTitle}</h2>
-                <p className="trail-text">{valueAt(data, 'fields.trailText', '')}</p>
+                <p
+                    className="trail-text"
+                    // eslint-disable-next-line react/no-danger
+                    dangerouslySetInnerHTML={{
+                        __html: valueAt(data, 'fields.trailText', ''),
+                    }}
+                />
             </div>
         </div>
     </Link>

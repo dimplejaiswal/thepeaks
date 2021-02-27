@@ -19,11 +19,7 @@ module.exports = merge(webpackBase, {
     mode: 'development',
 
     // Add hot reloading in development
-    entry: [
-        require.resolve('react-app-polyfill/ie11'),
-        'webpack-hot-middleware/client?reload=true',
-        `${APP_DIR}/index.js`,
-    ],
+    entry: [require.resolve('react-app-polyfill/ie11'), `${APP_DIR}/index.js`],
 
     // Don't use hashes in dev mode for better performance
     output: {
