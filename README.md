@@ -45,7 +45,7 @@ thePeaks uses a number of open source projects to work properly:
 
 ## Assumptions and working
 
--   We have used a custom image because of aspect ratio problem of the image.
+-   We have used a custom background image because of aspect ratio problem of the image.
 -   Bookmarking is being stored in local storage.
 -   Bookmark page is shown using the data stored in local storage.
 -   Special bookmark util to set the bookmark data and get the bookmark data
@@ -56,7 +56,7 @@ thePeaks uses a number of open source projects to work properly:
 -   Added service worker support using workbox
 -   It can precache js,css and other images
 -   It can cache index.html and other api's
--   It will work offline
+-   Home page will work offline
 
 ## Details
 
